@@ -24,7 +24,6 @@ const API = "http://localhost:5000";
 ═══════════════════════════════════════════════════════════════════════════ */
 const LANGS = {
   en: {
-<<<<<<< HEAD
     code: "en",
     label: "English",
     flag: "🇬🇧",
@@ -412,7 +411,7 @@ const LANGS = {
     dictDesc: "वर्णन (पर्यायी)",
     dictImage: "खुणेचा फोटो",
     saveDictEntry: "शब्दकोशात जोडा",
-=======
+    
     code: "en", label: "English", flag: "🇬🇧",
     appName: "SignLearn", appTagline: "See · Learn · Sign",
     welcomeBack: "Welcome back", createAccount: "Create your account",
@@ -585,7 +584,7 @@ const LANGS = {
     allCategories: "सर्व", addToDictionary: "नवीन खूण जोडा",
     dictWord: "खुणेचा शब्द", dictCategory: "श्रेणी", dictDesc: "वर्णन (पर्यायी)",
     dictImage: "खुणेचा फोटो", saveDictEntry: "शब्दकोशात जोडा",
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
     noDictEntries: "शब्दकोशात अजून खुणा नाहीत.",
   },
 };
@@ -902,7 +901,7 @@ const LangSwitcher = () => {
   const { lang, switchLang, LANGS } = useLang();
   return (
     <div className="sl-lang" role="navigation" aria-label="Language">
-<<<<<<< HEAD
+
       {Object.values(LANGS).map((l) => (
         <button
           key={l.code}
@@ -910,12 +909,12 @@ const LangSwitcher = () => {
           className={`sl-lang-btn ${lang === l.code ? "active" : ""}`}
           aria-pressed={lang === l.code}
         >
-=======
+
       {Object.values(LANGS).map(l => (
         <button key={l.code} onClick={() => switchLang(l.code)}
           className={`sl-lang-btn ${lang === l.code ? "active" : ""}`}
           aria-pressed={lang === l.code}>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
           {l.flag} {l.label}
         </button>
       ))}
@@ -928,11 +927,11 @@ const DiffBadge = ({ level }) => {
   const map = {
     easy: "sl-badge sl-badge-sage",
     medium: "sl-badge sl-badge-amber",
-<<<<<<< HEAD
+
     hard: "sl-badge sl-badge-rose",
-=======
+
     hard: "sl-badge sl-badge-rose"
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
   };
   return <span className={map[level] || map.medium}>{t[level] || level}</span>;
 };
@@ -945,7 +944,7 @@ const CountdownBadge = ({ dueDate }) => {
     if (!dueDate) return;
     const tick = () => {
       const diff = new Date(dueDate) - new Date();
-<<<<<<< HEAD
+
       if (diff <= 0) {
         setStatus("overdue");
         setDisplay(t.overdue);
@@ -962,12 +961,12 @@ const CountdownBadge = ({ dueDate }) => {
             ? `${t.dueIn} ${hrs} ${t.hoursLeft}`
             : `${t.dueIn} ${mins} ${t.minsLeft}`,
       );
-=======
+
       if (diff <= 0) { setStatus("overdue"); setDisplay(t.overdue); return; }
       const days = Math.floor(diff / 86400000), hrs = Math.floor((diff % 86400000) / 3600000), mins = Math.floor((diff % 3600000) / 60000);
       setStatus(diff < 86400000 ? "urgent" : "ok");
       setDisplay(days > 0 ? `${t.dueIn} ${days} ${t.daysLeft}` : hrs > 0 ? `${t.dueIn} ${hrs} ${t.hoursLeft}` : `${t.dueIn} ${mins} ${t.minsLeft}`);
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
     };
     tick();
     const id = setInterval(tick, 30000);
@@ -975,22 +974,22 @@ const CountdownBadge = ({ dueDate }) => {
   }, [dueDate, t]);
   if (!dueDate) return null;
   const cls = `sl-countdown sl-countdown-${status}`;
-<<<<<<< HEAD
+
   return (
     <span className={cls} role="timer">
       ⏰ {display}
     </span>
   );
-=======
+
   return <span className={cls} role="timer">⏰ {display}</span>;
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
 };
 
 /* ═══════════════════════════════════════════════════════════════════════════
    BADGE CARD
 ═══════════════════════════════════════════════════════════════════════════ */
 const BadgeCard = ({ badge, locked = false }) => (
-<<<<<<< HEAD
+        
   <div
     className={`sl-card ${locked ? "" : "sl-card-hover"}`}
     style={{
@@ -1038,7 +1037,7 @@ const BadgeCard = ({ badge, locked = false }) => (
         Not yet earned
       </p>
     )}
-=======
+
   <div className={`sl-card ${locked ? "" : "sl-card-hover"}`}
     style={{ opacity: locked ? 0.5 : 1, textAlign: "center", padding: "1.5rem 1rem" }}>
     <div style={{ fontSize: "2.75rem", marginBottom: "0.75rem" }}>{badge.emoji}</div>
@@ -1048,7 +1047,7 @@ const BadgeCard = ({ badge, locked = false }) => (
       <p style={{ fontSize: "0.75rem", color: "var(--sage)", fontWeight: 600, marginTop: "0.75rem" }}>{badge.earned_at}</p>
     )}
     {locked && <p style={{ fontSize: "0.75rem", color: "var(--stone-400)", marginTop: "0.75rem" }}>Not yet earned</p>}
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
   </div>
 );
 
@@ -1063,7 +1062,7 @@ const SignOfDayCard = () => {
   }, []);
   if (!sign) return null;
   return (
-<<<<<<< HEAD
+
     <div
       style={{
         background:
@@ -1113,7 +1112,7 @@ const SignOfDayCard = () => {
             flexShrink: 0,
           }}
         />
-=======
+
     <div style={{
       background: "linear-gradient(135deg, var(--sage-dark) 0%, var(--sage) 100%)",
       borderRadius: "var(--radius-xl)", padding: "2rem", color: "#fff",
@@ -1129,7 +1128,7 @@ const SignOfDayCard = () => {
       {sign.image_url && (
         <img src={sign.image_url} alt={sign.word}
           style={{ width: "6rem", height: "6rem", borderRadius: "var(--radius-lg)", objectFit: "cover", border: "3px solid rgba(255,255,255,0.3)", flexShrink: 0 }} />
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
       )}
     </div>
   );
@@ -1150,21 +1149,21 @@ const DictionaryViewer = () => {
       .get(`${API}/dictionary/categories`)
       .then((r) => setCategories(r.data));
   }, []);
-<<<<<<< HEAD
+
   const filtered = entries.filter((e) => {
     const matchSearch =
       e.word.toLowerCase().includes(search.toLowerCase()) ||
       (e.description || "").toLowerCase().includes(search.toLowerCase());
-=======
+
   const filtered = entries.filter(e => {
     const matchSearch = e.word.toLowerCase().includes(search.toLowerCase()) || (e.description || "").toLowerCase().includes(search.toLowerCase());
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
     const matchCat = category === "All" || e.category === category;
     return matchSearch && matchCat;
   });
   return (
     <div>
-<<<<<<< HEAD
+
       <div
         style={{
           display: "flex",
@@ -1267,7 +1266,7 @@ const DictionaryViewer = () => {
                     {e.description}
                   </p>
                 )}
-=======
+
       <div style={{ display: "flex", gap: "0.75rem", marginBottom: "1.25rem", flexWrap: "wrap", alignItems: "center" }}>
         <input className="sl-input" style={{ flex: 1, minWidth: "200px" }}
           placeholder={t.searchSigns} value={search} onChange={e => setSearch(e.target.value)} />
@@ -1292,7 +1291,7 @@ const DictionaryViewer = () => {
                 <p style={{ fontWeight: 600, fontSize: "0.9375rem", margin: "0 0 0.2rem", color: "var(--stone-900)" }}>{e.word}</p>
                 <p style={{ fontSize: "0.8125rem", color: "var(--sage)", fontWeight: 500, margin: 0 }}>{e.category}</p>
                 {e.description && <p style={{ fontSize: "0.75rem", color: "var(--stone-400)", marginTop: "0.25rem", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{e.description}</p>}
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
               </div>
             </div>
           ))}
@@ -1357,7 +1356,7 @@ const DoubtBox = ({ ano, username, isTeacher }) => {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
       {!isTeacher && (
-<<<<<<< HEAD
+
         <div
           style={{
             background: "var(--sage-light)",
@@ -1389,18 +1388,18 @@ const DoubtBox = ({ ano, username, isTeacher }) => {
             disabled={posting || !newQ.trim()}
             className="sl-btn sl-btn-primary sl-btn-sm"
           >
-=======
+
         <div style={{ background: "var(--sage-light)", border: "1px solid var(--sage-mid)", borderRadius: "var(--radius-lg)", padding: "1.25rem" }}>
           <p style={{ fontWeight: 600, color: "var(--sage-dark)", marginBottom: "0.75rem", fontSize: "0.9375rem" }}>{t.askDoubt}</p>
           <textarea className="sl-input sl-textarea" style={{ marginBottom: "0.75rem" }}
             rows={3} placeholder={t.doubtPlaceholder} value={newQ} onChange={e => setNewQ(e.target.value)} />
           <button onClick={submitDoubt} disabled={posting || !newQ.trim()} className="sl-btn sl-btn-primary sl-btn-sm">
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
             {posting ? "…" : t.submitDoubt}
           </button>
         </div>
       )}
-<<<<<<< HEAD
+
       {doubts.length === 0 ? (
         <p
           style={{
@@ -1545,7 +1544,7 @@ const DoubtBox = ({ ano, username, isTeacher }) => {
                     >
                       {r.body}
                     </p>
-=======
+
       {doubts.length === 0
         ? <p style={{ textAlign: "center", padding: "2rem", color: "var(--stone-400)", fontSize: "0.9375rem" }}>{t.noDoubts}</p>
         : doubts.map(d => (
@@ -1571,12 +1570,12 @@ const DoubtBox = ({ ano, username, isTeacher }) => {
                   <div key={r.id} style={{ background: "var(--sage-light)", border: "1px solid rgba(92,122,106,0.2)", borderRadius: "var(--radius-md)", padding: "0.875rem" }}>
                     <p style={{ fontSize: "0.75rem", fontWeight: 700, color: "var(--sage)", marginBottom: "0.25rem" }}>{r.author} · {r.created_at}</p>
                     <p style={{ fontSize: "0.9375rem", color: "var(--stone-800)", margin: 0 }}>{r.body}</p>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
                   </div>
                 ))}
                 {isTeacher && (
                   <div style={{ display: "flex", gap: "0.5rem" }}>
-<<<<<<< HEAD
+
                     <input
                       className="sl-input"
                       style={{ flex: 1 }}
@@ -1593,13 +1592,13 @@ const DoubtBox = ({ ano, username, isTeacher }) => {
                     >
                       {t.sendReply}
                     </button>
-=======
+
                     <input className="sl-input" style={{ flex: 1 }}
                       placeholder={t.replyPlaceholder} value={replyText[d.id] || ""}
                       onChange={e => setReplyText(p => ({ ...p, [d.id]: e.target.value }))}
                       onKeyDown={e => e.key === "Enter" && submitReply(d.id)} />
                     <button onClick={() => submitReply(d.id)} className="sl-btn sl-btn-primary sl-btn-sm">{t.sendReply}</button>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
                   </div>
                 )}
               </div>
@@ -1684,7 +1683,7 @@ const QuizOverlay = ({ user, topic, ano, onClose }) => {
 
   const q = qs[current];
 
-<<<<<<< HEAD
+
   if (loading)
     return (
       <div
@@ -1702,13 +1701,13 @@ const QuizOverlay = ({ user, topic, ano, onClose }) => {
           <div style={{ fontSize: "4rem", marginBottom: "1rem" }}>🤟</div>
           <p className="sl-subheading">{t.loadingQuiz}</p>
         </div>
-=======
+
   if (loading) return (
     <div style={{ position: "fixed", inset: 0, background: "var(--cream)", zIndex: 200, display: "flex", alignItems: "center", justifyContent: "center" }}>
       <div style={{ textAlign: "center" }}>
         <div style={{ fontSize: "4rem", marginBottom: "1rem" }}>🤟</div>
         <p className="sl-subheading">{t.loadingQuiz}</p>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
       </div>
     );
 
@@ -1737,19 +1736,19 @@ const QuizOverlay = ({ user, topic, ano, onClose }) => {
             {t.goBack}
           </button>
         </div>
-=======
+
   if (qs.length === 0) return (
     <div style={{ position: "fixed", inset: 0, background: "var(--cream)", zIndex: 200, display: "flex", alignItems: "center", justifyContent: "center" }}>
       <div style={{ textAlign: "center" }}>
         <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>📭</div>
         <p className="sl-subheading">{t.noQuestions}</p>
         <button onClick={() => onClose(null)} className="sl-btn sl-btn-secondary" style={{ marginTop: "1.5rem" }}>{t.goBack}</button>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
       </div>
     );
 
   return (
-<<<<<<< HEAD
+
     <div
       style={{
         position: "fixed",
@@ -1759,30 +1758,30 @@ const QuizOverlay = ({ user, topic, ano, onClose }) => {
         overflowY: "auto",
       }}
     >
-=======
+
     <div style={{ position: "fixed", inset: 0, background: "var(--cream)", zIndex: 200, overflowY: "auto" }}>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
       {newBadge && (
         <div className="sl-notification">
           <span style={{ fontSize: "2rem" }}>{newBadge.emoji}</span>
           <div>
-<<<<<<< HEAD
+
             <p style={{ fontWeight: 700, margin: "0 0 0.15rem" }}>
               Achievement unlocked
             </p>
             <p style={{ fontSize: "0.875rem", opacity: 0.8, margin: 0 }}>
               {newBadge.label}
             </p>
-=======
+
             <p style={{ fontWeight: 700, margin: "0 0 0.15rem" }}>Achievement unlocked</p>
             <p style={{ fontSize: "0.875rem", opacity: 0.8, margin: 0 }}>{newBadge.label}</p>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
           </div>
         </div>
       )}
 
       {!result ? (
-<<<<<<< HEAD
+
         <div
           className="sl-container"
           style={{ padding: "1.5rem", maxWidth: "720px" }}
@@ -1876,7 +1875,7 @@ const QuizOverlay = ({ user, topic, ano, onClose }) => {
                     transition: "all 0.15s",
                   }}
                 >
-=======
+
         <div className="sl-container" style={{ padding: "1.5rem", maxWidth: "720px" }}>
           {/* Header */}
           <div className="sl-card" style={{ marginBottom: "1.5rem", position: "sticky", top: "1rem", zIndex: 10 }}>
@@ -1901,12 +1900,12 @@ const QuizOverlay = ({ user, topic, ano, onClose }) => {
                     color: answers[i] ? "#fff" : "var(--stone-700)",
                     cursor: "pointer", transition: "all 0.15s"
                   }}>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
                   {i + 1}
                 </button>
               ))}
             </div>
-<<<<<<< HEAD
+
             <div
               className="sl-progress-track"
               style={{ marginTop: "0.875rem" }}
@@ -1917,17 +1916,17 @@ const QuizOverlay = ({ user, topic, ano, onClose }) => {
                   width: `${(Object.keys(answers).length / qs.length) * 100}%`,
                 }}
               />
-=======
+
             <div className="sl-progress-track" style={{ marginTop: "0.875rem" }}>
               <div className="sl-progress-fill" style={{ width: `${(Object.keys(answers).length / qs.length) * 100}%` }} />
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
             </div>
           </div>
 
           {/* Question */}
           {q && (
             <div className="sl-card" style={{ marginBottom: "1rem" }}>
-<<<<<<< HEAD
+
               <div
                 style={{
                   display: "flex",
@@ -1948,17 +1947,17 @@ const QuizOverlay = ({ user, topic, ano, onClose }) => {
                     lineHeight: 1.3,
                   }}
                 >
-=======
+
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "1rem", marginBottom: "1.5rem", flexWrap: "wrap" }}>
                 <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "1.4rem", fontWeight: 400, margin: 0, flex: 1, lineHeight: 1.3 }}>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
                   {current + 1}. {q.text}
                 </h2>
                 <DiffBadge level={q.difficulty} />
               </div>
 
               {q.image && (
-<<<<<<< HEAD
+
                 <div
                   style={{
                     display: "flex",
@@ -1987,19 +1986,19 @@ const QuizOverlay = ({ user, topic, ano, onClose }) => {
                         borderRadius: "var(--radius-md)",
                       }}
                     />
-=======
+
                 <div style={{ display: "flex", justifyContent: "center", marginBottom: "1.5rem" }}>
                   <div style={{ background: "var(--cream)", border: "2px solid var(--stone-100)", borderRadius: "var(--radius-lg)", overflow: "hidden", padding: "0.5rem", maxWidth: "340px" }}>
                     <img src={q.image} alt="Sign to identify"
                       style={{ maxHeight: "240px", width: "auto", display: "block", margin: "0 auto", borderRadius: "var(--radius-md)" }} />
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
                   </div>
                 </div>
               )}
 
               {q.hint && (
                 <div style={{ marginBottom: "1.25rem" }}>
-<<<<<<< HEAD
+
                   {!hintUsed[current] ? (
                     <button
                       onClick={() =>
@@ -2057,7 +2056,7 @@ const QuizOverlay = ({ user, topic, ano, onClose }) => {
                               objectFit: "cover",
                             }}
                           />
-=======
+
                   {!hintUsed[current]
                     ? <button onClick={() => setHintUsed({ ...hintUsed, [current]: true })}
                       className="sl-btn sl-btn-ghost sl-btn-sm">
@@ -2080,12 +2079,12 @@ const QuizOverlay = ({ user, topic, ano, onClose }) => {
                       {optImg && (
                         <div style={{ aspectRatio: "16/9", overflow: "hidden", background: "var(--cream)" }}>
                           <img src={optImg} alt={`Option ${opt}`} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
                         </div>
                       )}
                       <div className="sl-option-inner">
                         <span className="sl-option-key">{opt}</span>
-<<<<<<< HEAD
+
                         <span
                           style={{
                             fontWeight: 500,
@@ -2097,9 +2096,9 @@ const QuizOverlay = ({ user, topic, ano, onClose }) => {
                         >
                           {q[opt.toLowerCase()]}
                         </span>
-=======
+
                         <span style={{ fontWeight: 500, fontSize: "0.9375rem", color: isSelected ? "var(--sage-dark)" : "var(--stone-700)" }}>{q[opt.toLowerCase()]}</span>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
                       </div>
                     </button>
                   );
@@ -2109,7 +2108,7 @@ const QuizOverlay = ({ user, topic, ano, onClose }) => {
           )}
 
           {/* Navigation */}
-<<<<<<< HEAD
+
           <div
             style={{ display: "flex", gap: "0.75rem", marginBottom: "1rem" }}
           >
@@ -2152,7 +2151,7 @@ const QuizOverlay = ({ user, topic, ano, onClose }) => {
               <p style={{ color: "var(--rose)", fontWeight: 600, margin: 0 }}>
                 {error}
               </p>
-=======
+
           <div style={{ display: "flex", gap: "0.75rem", marginBottom: "1rem" }}>
             <button onClick={() => setCurrent(Math.max(0, current - 1))} disabled={current === 0}
               className="sl-btn sl-btn-secondary" style={{ flex: 1 }}>
@@ -2165,13 +2164,13 @@ const QuizOverlay = ({ user, topic, ano, onClose }) => {
           {error && (
             <div style={{ background: "var(--rose-light)", border: "1px solid rgba(176,92,92,0.2)", borderRadius: "var(--radius-md)", padding: "0.875rem 1rem", textAlign: "center" }}>
               <p style={{ color: "var(--rose)", fontWeight: 600, margin: 0 }}>{error}</p>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
             </div>
           )}
         </div>
       ) : (
         /* RESULT SCREEN */
-<<<<<<< HEAD
+
         <div
           style={{
             minHeight: "100vh",
@@ -2262,7 +2261,7 @@ const QuizOverlay = ({ user, topic, ano, onClose }) => {
                 <span>
                   {t.attemptNo} #{result.attempt_no}
                 </span>
-=======
+
         <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "2rem" }}>
           <div style={{ maxWidth: "520px", width: "100%", display: "flex", flexDirection: "column", gap: "1.25rem" }}>
             <div style={{
@@ -2283,13 +2282,13 @@ const QuizOverlay = ({ user, topic, ano, onClose }) => {
               <div style={{ display: "flex", justifyContent: "center", gap: "1.5rem", marginTop: "1.25rem", fontSize: "0.875rem", opacity: 0.8 }}>
                 <span>+{result.xp} {t.xpEarned}</span>
                 <span>{t.attemptNo} #{result.attempt_no}</span>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
               </div>
             </div>
 
             {/* Answer review */}
             <div className="sl-card">
-<<<<<<< HEAD
+
               <p className="sl-label" style={{ marginBottom: "0.875rem" }}>
                 {t.scoreBreakdown}
               </p>
@@ -2300,15 +2299,15 @@ const QuizOverlay = ({ user, topic, ano, onClose }) => {
                   gap: "0.5rem",
                 }}
               >
-=======
+
               <p className="sl-label" style={{ marginBottom: "0.875rem" }}>{t.scoreBreakdown}</p>
               <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
                 {qs.map((q, i) => {
                   const correct =
                     answers[i]?.toUpperCase() === q.correct?.toUpperCase();
                   return (
-<<<<<<< HEAD
+
                     <div
                       key={i}
                       style={{
@@ -2356,7 +2355,7 @@ const QuizOverlay = ({ user, topic, ano, onClose }) => {
                           {t.correctAnswer2} {q.correct}
                         </span>
                       )}
-=======
+
                     <div key={i} style={{
                       display: "flex", alignItems: "center", gap: "0.875rem", padding: "0.75rem 1rem",
                       borderRadius: "var(--radius-md)", background: correct ? "var(--sage-light)" : "var(--rose-light)",
@@ -2365,21 +2364,21 @@ const QuizOverlay = ({ user, topic, ano, onClose }) => {
                       <span style={{ fontWeight: 700, color: correct ? "var(--sage)" : "var(--rose)", fontSize: "1.125rem" }}>{correct ? "✓" : "✗"}</span>
                       <span style={{ fontSize: "0.875rem", color: "var(--stone-700)", flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>Q{i + 1}: {q.text}</span>
                       {!correct && <span style={{ fontSize: "0.75rem", fontWeight: 600, color: "var(--stone-500)", flexShrink: 0 }}>{t.correctAnswer2} {q.correct}</span>}
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
                     </div>
                   );
                 })}
               </div>
             </div>
 
-<<<<<<< HEAD
+
             <button
               onClick={() => onClose(result.suggestion)}
               className="sl-btn sl-btn-primary sl-btn-lg sl-btn-full"
             >
-=======
+
             <button onClick={() => onClose(result.suggestion)} className="sl-btn sl-btn-primary sl-btn-lg sl-btn-full">
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
               {t.backToLessons}
             </button>
           </div>
@@ -2426,7 +2425,7 @@ const Auth = ({ setAuth }) => {
   return (
     <>
       <DesignSystem />
-<<<<<<< HEAD
+
       <div
         style={{
           minHeight: "100vh",
@@ -2486,7 +2485,7 @@ const Auth = ({ setAuth }) => {
               width: "100%",
             }}
           >
-=======
+
       <div style={{ minHeight: "100vh", display: "grid", gridTemplateColumns: "1fr 1fr", background: "var(--cream)" }}>
         {/* Left: brand panel */}
         <div style={{
@@ -2502,13 +2501,13 @@ const Auth = ({ setAuth }) => {
             {t.appTagline}
           </p>
           <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem", width: "100%" }}>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
             {[
               { icon: "👁", text: "See signs demonstrated clearly" },
               { icon: "📖", text: "Learn at your own pace" },
               { icon: "✋", text: "Build confidence step by step" },
             ].map((item, i) => (
-<<<<<<< HEAD
+
               <div
                 key={i}
                 style={{ display: "flex", alignItems: "center", gap: "1rem" }}
@@ -2531,18 +2530,18 @@ const Auth = ({ setAuth }) => {
                 <p style={{ margin: 0, fontSize: "0.9375rem", opacity: 0.9 }}>
                   {item.text}
                 </p>
-=======
+
               <div key={i} style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
                 <span style={{ fontSize: "1.25rem", background: "rgba(255,255,255,0.15)", width: "2.5rem", height: "2.5rem", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{item.icon}</span>
                 <p style={{ margin: 0, fontSize: "0.9375rem", opacity: 0.9 }}>{item.text}</p>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
               </div>
             ))}
           </div>
         </div>
 
         {/* Right: form */}
-<<<<<<< HEAD
+
         <div
           style={{
             display: "flex",
@@ -2552,14 +2551,14 @@ const Auth = ({ setAuth }) => {
             padding: "2rem",
           }}
         >
-=======
+
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "2rem" }}>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
           <div style={{ width: "100%", maxWidth: "420px" }}>
             <div style={{ marginBottom: "2rem" }}>
               <LangSwitcher />
             </div>
-<<<<<<< HEAD
+\
             <h2
               style={{
                 fontFamily: "var(--font-serif)",
@@ -2645,7 +2644,7 @@ const Auth = ({ setAuth }) => {
                         className={`sl-btn ${form.role === r.val ? "sl-btn-primary" : "sl-btn-secondary"}`}
                         aria-pressed={form.role === r.val}
                       >
-=======
+
             <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "1.75rem", margin: "0 0 0.5rem", fontWeight: 400 }}>
               {isLogin ? t.welcomeBack : t.createAccount}
             </h2>
@@ -2672,14 +2671,14 @@ const Auth = ({ setAuth }) => {
                         onClick={() => setForm({ ...form, role: r.val })}
                         className={`sl-btn ${form.role === r.val ? "sl-btn-primary" : "sl-btn-secondary"}`}
                         aria-pressed={form.role === r.val}>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
                         {r.label}
                       </button>
                     ))}
                   </div>
                 </div>
               )}
-<<<<<<< HEAD
+
               <button
                 type="submit"
                 className="sl-btn sl-btn-primary sl-btn-lg sl-btn-full"
@@ -2701,7 +2700,7 @@ const Auth = ({ setAuth }) => {
               role="button"
               tabIndex={0}
             >
-=======
+
               <button type="submit" className="sl-btn sl-btn-primary sl-btn-lg sl-btn-full" style={{ marginTop: "0.5rem" }}>
                 {isLogin ? t.signIn : t.createAccount}
               </button>
@@ -2709,7 +2708,7 @@ const Auth = ({ setAuth }) => {
             <p onClick={() => setIsLogin(!isLogin)}
               style={{ textAlign: "center", marginTop: "1.5rem", color: "var(--sage)", fontWeight: 600, cursor: "pointer", fontSize: "0.9375rem" }}
               role="button" tabIndex={0}>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
               {isLogin ? t.needAccount : t.alreadyAccount}
             </p>
           </div>
@@ -2734,7 +2733,7 @@ const Topbar = ({ user, title, role }) => {
       <div style={{ display: "flex", alignItems: "center", gap: "0.875rem" }}>
         <span style={{ fontSize: "1.75rem", lineHeight: 1 }}>🤟</span>
         <div>
-<<<<<<< HEAD
+
           <span
             style={{
               fontFamily: "var(--font-serif)",
@@ -2779,7 +2778,7 @@ const Topbar = ({ user, title, role }) => {
           }}
           className="sl-btn sl-btn-ghost sl-btn-sm"
         >
-=======
+
           <span style={{ fontFamily: "var(--font-serif)", fontSize: "1.25rem", color: "var(--stone-900)" }}>SignLearn</span>
           {role && <span className="sl-badge sl-badge-sage" style={{ marginLeft: "0.5rem" }}>{role}</span>}
         </div>
@@ -2789,7 +2788,7 @@ const Topbar = ({ user, title, role }) => {
         <span style={{ color: "var(--stone-500)", fontSize: "0.875rem", fontWeight: 500 }}>{user.username}</span>
         <button onClick={() => { localStorage.clear(); window.location.href = "/" }}
           className="sl-btn sl-btn-ghost sl-btn-sm">
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
           {t.logout}
         </button>
       </div>
@@ -2812,7 +2811,7 @@ const TeacherView = ({ user }) => {
   const [sessions, setSessions] = useState([]);
   const [dueForm, setDueForm] = useState({ assignment_no: "", due_date: "" });
   const [dueMsg, setDueMsg] = useState("");
-<<<<<<< HEAD
+
   const [sotd, setSotd] = useState({
     word: "",
     description: "",
@@ -2838,13 +2837,13 @@ const TeacherView = ({ user }) => {
     hint: "",
     difficulty: "medium",
   });
-=======
+
   const [sotd, setSotd] = useState({ word: "", description: "", image_url: "" });
   const [sotdImgLoading, setSotdImgLoading] = useState(false);
   const [dictForm, setDictForm] = useState({ word: "", category: "Greetings", description: "", image_url: "" });
   const [dictImgLoading, setDictImgLoading] = useState(false);
   const [q, setQ] = useState({ assignment_no: 1, topic: "", text: "", opt_a: "", opt_b: "", opt_c: "", opt_d: "", correct_opt: "A", hint: "", difficulty: "medium" });
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
 
   useEffect(() => {
     axios.get(`${API}/teacher/stats`).then((r) => setStats(r.data));
@@ -2878,7 +2877,7 @@ const TeacherView = ({ user }) => {
   };
 
   const addQuestion = async () => {
-<<<<<<< HEAD
+
     if (!q.text || !q.opt_a || !q.opt_b || !q.opt_c || !q.opt_d)
       return alert(t.fillAllFields);
     await axios.post(`${API}/teacher/add_question`, {
@@ -2899,17 +2898,17 @@ const TeacherView = ({ user }) => {
       opt_d: "",
       hint: "",
     });
-=======
+
     if (!q.text || !q.opt_a || !q.opt_b || !q.opt_c || !q.opt_d) return alert(t.fillAllFields);
     await axios.post(`${API}/teacher/add_question`, { ...q, image_url: qImgs.main, img_a: qImgs.a, img_b: qImgs.b, img_c: qImgs.c, img_d: qImgs.d });
     setQImgs({ main: "", a: "", b: "", c: "", d: "" });
     setQ({ ...q, text: "", opt_a: "", opt_b: "", opt_c: "", opt_d: "", hint: "" });
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
     alert(t.questionAdded);
   };
 
   const saveSignOfDay = async () => {
-<<<<<<< HEAD
+
     if (!sotd.word || !sotd.description)
       return alert("Please fill in the word and description.");
     await axios.post(`${API}/teacher/sign_of_day`, {
@@ -2931,7 +2930,7 @@ const TeacherView = ({ user }) => {
       image_url: "",
     });
     alert("Added to dictionary.");
-=======
+
     if (!sotd.word || !sotd.description) return alert("Please fill in the word and description.");
     await axios.post(`${API}/teacher/sign_of_day`, { ...sotd, set_by: user.username });
     setSotd({ word: "", description: "", image_url: "" }); alert("Sign of the Day updated.");
@@ -2941,18 +2940,18 @@ const TeacherView = ({ user }) => {
     if (!dictForm.word || !dictForm.image_url) return alert("Word and image are required.");
     await axios.post(`${API}/teacher/dictionary`, dictForm);
     setDictForm({ word: "", category: "Greetings", description: "", image_url: "" }); alert("Added to dictionary.");
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
   };
 
   const updateDueDate = async () => {
     if (!dueForm.assignment_no || !dueForm.due_date) return;
     await axios.post(`${API}/teacher/set_due_date`, dueForm);
-<<<<<<< HEAD
+
     setDueMsg("Updated.");
     axios.get(`${API}/sessions`).then((r) => setSessions(r.data));
-=======
+
     setDueMsg("Updated."); axios.get(`${API}/sessions`).then(r => setSessions(r.data));
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
     setTimeout(() => setDueMsg(""), 2500);
   };
 
@@ -2969,16 +2968,16 @@ const TeacherView = ({ user }) => {
 
   const formSection = (title, children) => (
     <div className="sl-card" style={{ maxWidth: "560px" }}>
-<<<<<<< HEAD
+
       <h2
         className="sl-heading"
         style={{ marginBottom: "1.5rem", fontSize: "1.25rem" }}
       >
         {title}
       </h2>
-=======
+
       <h2 className="sl-heading" style={{ marginBottom: "1.5rem", fontSize: "1.25rem" }}>{title}</h2>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
         {children}
       </div>
@@ -2992,7 +2991,7 @@ const TeacherView = ({ user }) => {
         <Topbar user={user} role={t.teacher} />
 
         {/* Tab bar */}
-<<<<<<< HEAD
+
         <div
           style={{
             background: "#fff",
@@ -3015,13 +3014,13 @@ const TeacherView = ({ user }) => {
                 onClick={() => setTab(tb.k)}
                 className={`sl-tab ${tab === tb.k ? "active" : ""}`}
               >
-=======
+
         <div style={{ background: "#fff", borderBottom: "1px solid var(--stone-100)", padding: "0 1.5rem", overflowX: "auto" }}>
           <div style={{ display: "flex", gap: "0.25rem", padding: "0.625rem 0", width: "max-content" }}>
             {TABS.map(tb => (
               <button key={tb.k} onClick={() => setTab(tb.k)}
                 className={`sl-tab ${tab === tb.k ? "active" : ""}`}>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
                 {tb.l}
               </button>
             ))}
@@ -3029,7 +3028,7 @@ const TeacherView = ({ user }) => {
         </div>
 
         <div className="sl-container" style={{ padding: "2rem 1.5rem" }}>
-<<<<<<< HEAD
+
           {/* UPLOAD */}
           {tab === "upload" &&
             formSection(
@@ -3120,7 +3119,7 @@ const TeacherView = ({ user }) => {
                 </button>
               </>,
             )}
-=======
+
 
           {/* UPLOAD */}
           {tab === "upload" && formSection(t.uploadLesson, <>
@@ -3153,12 +3152,12 @@ const TeacherView = ({ user }) => {
               {saving ? t.saving : t.saveLesson}
             </button>
           </>)}
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
 
           {/* QUIZ CREATOR */}
           {tab === "quiz" && (
             <div className="sl-card" style={{ maxWidth: "640px" }}>
-<<<<<<< HEAD
+
               <h2
                 className="sl-heading"
                 style={{ marginBottom: "1.5rem", fontSize: "1.25rem" }}
@@ -3208,7 +3207,7 @@ const TeacherView = ({ user }) => {
                         setQ({ ...q, difficulty: e.target.value })
                       }
                     >
-=======
+
               <h2 className="sl-heading" style={{ marginBottom: "1.5rem", fontSize: "1.25rem" }}>{t.addQuizQuestion}</h2>
               <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
@@ -3219,7 +3218,7 @@ const TeacherView = ({ user }) => {
                   <div>
                     <label className="sl-label" style={{ display: "block", marginBottom: "0.4rem" }}>Difficulty</label>
                     <select className="sl-input" value={q.difficulty} onChange={e => setQ({ ...q, difficulty: e.target.value })}>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
                       <option value="easy">{t.easy}</option>
                       <option value="medium">{t.medium}</option>
                       <option value="hard">{t.hard}</option>
@@ -3227,7 +3226,7 @@ const TeacherView = ({ user }) => {
                   </div>
                 </div>
                 <div>
-<<<<<<< HEAD
+
                   <label
                     className="sl-label"
                     style={{ display: "block", marginBottom: "0.4rem" }}
@@ -3412,7 +3411,7 @@ const TeacherView = ({ user }) => {
                               alt=""
                             />
                           )}
-=======
+
                   <label className="sl-label" style={{ display: "block", marginBottom: "0.4rem" }}>{t.questionText}</label>
                   <textarea className="sl-input sl-textarea" rows={3} placeholder={t.questionText}
                     value={q.text} onChange={e => setQ({ ...q, text: e.target.value })} />
@@ -3446,13 +3445,13 @@ const TeacherView = ({ user }) => {
                             style={{ fontSize: "0.8125rem", color: "var(--stone-400)", flex: 1 }} />
                           {upImg === l && <span style={{ fontSize: "0.8125rem", color: "var(--sage)" }}>{t.uploading}</span>}
                           {qImgs[l] && <img src={qImgs[l]} style={{ width: "2.5rem", height: "2.5rem", borderRadius: "var(--radius-sm)", objectFit: "cover" }} alt="" />}
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
                         </div>
                       </div>
                     ))}
                   </div>
                 </div>
-<<<<<<< HEAD
+
                 <div
                   style={{
                     background: "var(--sage-light)",
@@ -3492,7 +3491,7 @@ const TeacherView = ({ user }) => {
                 >
                   {t.addQuestion}
                 </button>
-=======
+
                 <div style={{ background: "var(--sage-light)", border: "1px solid rgba(92,122,106,0.25)", borderRadius: "var(--radius-md)", padding: "1rem" }}>
                   <label className="sl-label" style={{ display: "block", marginBottom: "0.5rem", color: "var(--sage-dark)" }}>{t.correctAnswer}</label>
                   <select className="sl-input" style={{ background: "#fff" }} value={q.correct_opt}
@@ -3501,13 +3500,13 @@ const TeacherView = ({ user }) => {
                   </select>
                 </div>
                 <button onClick={addQuestion} className="sl-btn sl-btn-primary sl-btn-full">{t.addQuestion}</button>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
               </div>
             </div>
           )}
 
           {/* SIGN OF THE DAY */}
-<<<<<<< HEAD
+
           {tab === "sotd" &&
             formSection(
               t.setSignOfDay,
@@ -3767,7 +3766,7 @@ const TeacherView = ({ user }) => {
                 >
                   {t.visualDict}
                 </h3>
-=======
+
           {tab === "sotd" && formSection(t.setSignOfDay, <>
             <div>
               <label className="sl-label" style={{ display: "block", marginBottom: "0.4rem" }}>{t.signWord}</label>
@@ -3838,7 +3837,7 @@ const TeacherView = ({ user }) => {
               </div>
               <div className="sl-card">
                 <h3 className="sl-heading" style={{ marginBottom: "1.25rem", fontSize: "1.125rem" }}>{t.visualDict}</h3>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
                 <DictionaryViewer />
               </div>
             </div>
@@ -3846,7 +3845,7 @@ const TeacherView = ({ user }) => {
 
           {/* SCHEDULE */}
           {tab === "schedule" && (
-<<<<<<< HEAD
+
             <div
               style={{
                 display: "flex",
@@ -3915,7 +3914,7 @@ const TeacherView = ({ user }) => {
                         {dueMsg}
                       </span>
                     )}
-=======
+
             <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", maxWidth: "560px" }}>
               <div className="sl-card">
                 <h2 className="sl-heading" style={{ marginBottom: "1.5rem", fontSize: "1.25rem" }}>{t.setDueDate}</h2>
@@ -3930,12 +3929,12 @@ const TeacherView = ({ user }) => {
                   <div style={{ display: "flex", alignItems: "center", gap: "0.875rem" }}>
                     <button onClick={updateDueDate} className="sl-btn sl-btn-primary">{t.updateDue}</button>
                     {dueMsg && <span style={{ color: "var(--sage)", fontWeight: 600, fontSize: "0.9375rem" }}>{dueMsg}</span>}
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
                   </div>
                 </div>
               </div>
               <div className="sl-card">
-<<<<<<< HEAD
+
                 <div
                   style={{
                     display: "flex",
@@ -3966,12 +3965,12 @@ const TeacherView = ({ user }) => {
                       >
                         Lesson {s.ano}: {s.title}
                       </p>
-=======
+
                 <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
                   {sessions.map(s => (
                     <div key={s.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0.875rem 1rem", background: "var(--cream)", borderRadius: "var(--radius-md)", flexWrap: "wrap", gap: "0.5rem" }}>
                       <p style={{ fontWeight: 500, margin: 0, fontSize: "0.9375rem" }}>Lesson {s.ano}: {s.title}</p>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
                       <CountdownBadge dueDate={s.due_date} />
                     </div>
                   ))}
@@ -3983,7 +3982,7 @@ const TeacherView = ({ user }) => {
           {/* STATS */}
           {tab === "stats" && (
             <div style={{ maxWidth: "720px" }}>
-<<<<<<< HEAD
+
               <div
                 style={{
                   display: "flex",
@@ -4124,7 +4123,7 @@ const TeacherView = ({ user }) => {
                   ))}
                 </div>
               )}
-=======
+
               <div style={{ display: "flex", alignItems: "center", gap: "0.625rem", marginBottom: "1.5rem" }}>
                 <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "var(--rose)", display: "inline-block", animation: "pulse 2s infinite" }} />
                 <p className="sl-label">{t.liveProgress}</p>
@@ -4151,14 +4150,14 @@ const TeacherView = ({ user }) => {
                     </div>
                   ))}
                 </div>}
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
             </div>
           )}
 
           {/* LEADERBOARD */}
           {tab === "leaderboard" && (
             <div style={{ maxWidth: "560px" }}>
-<<<<<<< HEAD
+
               <h2 className="sl-heading" style={{ marginBottom: "1.5rem" }}>
                 {t.classLeaderboard}
               </h2>
@@ -4246,7 +4245,7 @@ const TeacherView = ({ user }) => {
                   ))}
                 </div>
               )}
-=======
+
               <h2 className="sl-heading" style={{ marginBottom: "1.5rem" }}>{t.classLeaderboard}</h2>
               {lb.length === 0
                 ? <div className="sl-empty"><div className="sl-empty-icon">🏆</div><p>{t.noData}</p></div>
@@ -4268,20 +4267,20 @@ const TeacherView = ({ user }) => {
                     </div>
                   ))}
                 </div>}
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
             </div>
           )}
 
           {/* DOUBTS */}
           {tab === "doubts" && (
             <div style={{ maxWidth: "640px" }}>
-<<<<<<< HEAD
+
               <h2 className="sl-heading" style={{ marginBottom: "1.5rem" }}>
                 {t.allDoubts}
               </h2>
-=======
+
               <h2 className="sl-heading" style={{ marginBottom: "1.5rem" }}>{t.allDoubts}</h2>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
               <DoubtBox ano={null} username={user.username} isTeacher={true} />
             </div>
           )}
@@ -4363,7 +4362,7 @@ const StudentView = ({ user }) => {
       <DesignSystem />
       <div className="sl-page">
         {activeQuiz && (
-<<<<<<< HEAD
+
           <QuizOverlay
             user={user}
             topic={activeQuiz.title}
@@ -4376,26 +4375,26 @@ const StudentView = ({ user }) => {
                 .then((r) => setHistory(r.data));
             }}
           />
-=======
+
           <QuizOverlay user={user} topic={activeQuiz.title} ano={activeQuiz.ano}
             onClose={tip => { if (tip) setTip(tip); setAQ(null); axios.get(`${API}/student/history/${user.username}`).then(r => setHistory(r.data)); }} />
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
         )}
         {newBadgePopup && (
           <div className="sl-notification">
             <span style={{ fontSize: "2rem" }}>{newBadgePopup.emoji}</span>
             <div>
-<<<<<<< HEAD
+
               <p style={{ fontWeight: 700, margin: "0 0 0.15rem" }}>
                 Achievement unlocked!
               </p>
               <p style={{ fontSize: "0.875rem", opacity: 0.8, margin: 0 }}>
                 {newBadgePopup.label}
               </p>
-=======
+
               <p style={{ fontWeight: 700, margin: "0 0 0.15rem" }}>Achievement unlocked!</p>
               <p style={{ fontSize: "0.875rem", opacity: 0.8, margin: 0 }}>{newBadgePopup.label}</p>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
             </div>
           </div>
         )}
@@ -4404,7 +4403,7 @@ const StudentView = ({ user }) => {
 
         <div className="sl-container" style={{ padding: "1.5rem" }}>
           {/* Stats */}
-<<<<<<< HEAD
+
           <div
             style={{
               display: "grid",
@@ -4413,14 +4412,14 @@ const StudentView = ({ user }) => {
               marginBottom: "1.5rem",
             }}
           >
-=======
+
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem", marginBottom: "1.5rem" }}>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
             {[
               { label: t.lessonsAvailable, value: vids.length, icon: "📹" },
               { label: t.quizzesDone, value: history.length, icon: "✅" },
               { label: t.avgScore, value: `${avgScore}%`, icon: "⭐" },
-<<<<<<< HEAD
+
             ].map((s) => (
               <div
                 key={s.label}
@@ -4430,11 +4429,11 @@ const StudentView = ({ user }) => {
                 <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>
                   {s.icon}
                 </div>
-=======
+
             ].map(s => (
               <div key={s.label} className="sl-card sl-stat" style={{ padding: "1.25rem" }}>
                 <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>{s.icon}</div>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
                 <p className="sl-stat-value">{s.value}</p>
                 <p className="sl-stat-label">{s.label}</p>
               </div>
@@ -4446,7 +4445,7 @@ const StudentView = ({ user }) => {
 
           {/* Teacher tip */}
           {tip && (
-<<<<<<< HEAD
+
             <div
               style={{
                 background: "var(--sage-light)",
@@ -4832,7 +4831,7 @@ const StudentView = ({ user }) => {
             </div>
           )}
 
-=======
+
             <div style={{
               background: "var(--sage-light)", border: "1px solid var(--sage-mid)",
               borderRadius: "var(--radius-lg)", padding: "1.125rem 1.25rem",
@@ -4969,12 +4968,12 @@ const StudentView = ({ user }) => {
             </div>
           )}
 
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
           {/* BADGES */}
           {tab === "badges" && (
             <div style={{ paddingBottom: "2rem" }}>
               {badges.length === 0 && (
-<<<<<<< HEAD
+
                 <div
                   style={{
                     background: "var(--amber-light)",
@@ -4995,16 +4994,16 @@ const StudentView = ({ user }) => {
                   >
                     {t.noBadges}
                   </p>
-=======
+
                 <div style={{ background: "var(--amber-light)", border: "1px solid rgba(196,135,74,0.2)", borderRadius: "var(--radius-lg)", padding: "2rem", textAlign: "center", marginBottom: "1.5rem" }}>
                   <p style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>🎖️</p>
                   <p style={{ color: "var(--amber)", fontWeight: 600, margin: 0 }}>{t.noBadges}</p>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
                 </div>
               )}
               {badges.length > 0 && (
                 <div style={{ marginBottom: "2rem" }}>
-<<<<<<< HEAD
+
                   <p className="sl-label" style={{ marginBottom: "1rem" }}>
                     {t.myBadges} ({badges.length})
                   </p>
@@ -5037,7 +5036,7 @@ const StudentView = ({ user }) => {
                   .map((b) => (
                     <BadgeCard key={b.key} badge={b} locked={true} />
                   ))}
-=======
+
                   <p className="sl-label" style={{ marginBottom: "1rem" }}>{t.myBadges} ({badges.length})</p>
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", gap: "1rem" }}>
                     {badges.map(b => <BadgeCard key={b.key} badge={b} />)}
@@ -5047,7 +5046,7 @@ const StudentView = ({ user }) => {
               <p className="sl-label" style={{ marginBottom: "1rem" }}>{t.allBadges}</p>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", gap: "1rem" }}>
                 {allBadgeDefs.filter(b => !earnedKeys.has(b.key)).map(b => <BadgeCard key={b.key} badge={b} locked={true} />)}
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
               </div>
             </div>
           )}
@@ -5055,13 +5054,13 @@ const StudentView = ({ user }) => {
           {/* DICTIONARY */}
           {tab === "dict" && (
             <div style={{ paddingBottom: "2rem" }}>
-<<<<<<< HEAD
+
               <h2 className="sl-heading" style={{ marginBottom: "1.25rem" }}>
                 {t.visualDict}
               </h2>
-=======
+
               <h2 className="sl-heading" style={{ marginBottom: "1.25rem" }}>{t.visualDict}</h2>
->>>>>>> 2b6c589e7c2001ee25c5028ae53fc6606f32fee9
+
               <DictionaryViewer />
             </div>
           )}
