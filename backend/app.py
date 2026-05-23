@@ -241,7 +241,7 @@ def upload_image():
         return jsonify({"error": "Only image files allowed"}), 400
     filename = secure_filename(f"img_{datetime.datetime.now().timestamp()}_{file.filename}")
     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-    return jsonify({"url": f"http://localhost:5000/uploads/{filename}"})
+    return jsonify({"url": f"{request.host_url}uploads/{filename}"})
 
 @app.route('/teacher/add_question', methods=['POST'])
 def add_q():
@@ -448,9 +448,11 @@ def submit():
 def get_sessions():
     s = Session.query.order_by(Session.assignment_no.asc()).all()
     return jsonify([{
-        "id": x.id, "title": x.title,
-        "url": f"http://localhost:5000/uploads/{x.filename}",
-        "ano": x.assignment_no, "description": x.description or "",
+        "id": x.id,
+        "title": x.title,
+        "url": f"{request.host_url}uploads/{x.filename}",
+        "ano": x.assignment_no,
+        "description": x.description or "",
         "due_date": x.due_date.isoformat() if x.due_date else None
     } for x in s])
 
@@ -459,16 +461,23 @@ def serve(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 def _fmt_reply(r):
-    return {"id": r.id, "author": r.author, "body": r.body,
-            "created_at": r.created_at.strftime("%d %b %H:%M")}
+    return {
+        "id": r.id,
+        "author": r.author,
+        "body": r.body,
+        "created_at": r.created_at.strftime("%d %b %H:%M")
+    }
 
 def _fmt_doubt(d):
     return {
-        "id": d.id, "student_name": d.student_name,
-        "assignment_no": d.assignment_no, "question": d.question,
+        "id": d.id,
+        "student_name": d.student_name,
+        "assignment_no": d.assignment_no,
+        "question": d.question,
         "created_at": d.created_at.strftime("%d %b %H:%M"),
         "replies": [_fmt_reply(r) for r in d.replies]
     }
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True, port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    socketio.run(app, host='0.0.0.0', port=port)
