@@ -1054,12 +1054,14 @@ const BadgeCard = ({ badge, locked = false }) => (
 const SignOfDayCard = () => {
   const { t } = useLang();
   const [sign, setSign] = useState(null);
+
   useEffect(() => {
     axios.get(`${API}/sign_of_day`).then((r) => setSign(r.data));
   }, []);
-  if (!sign) return null;
-  return (
 
+  if (!sign) return null;
+
+  return (
     <div
       style={{
         background:
@@ -1074,14 +1076,21 @@ const SignOfDayCard = () => {
         boxShadow: "var(--shadow-md)",
       }}
     >
-      <div style={{ fontSize: "3.5rem", flexShrink: 0, lineHeight: 1 }}>🤟</div>
+      <div style={{ fontSize: "3.5rem", flexShrink: 0, lineHeight: 1 }}>
+        🤟
+      </div>
+
       <div style={{ flex: 1 }}>
         <p
           className="sl-label"
-          style={{ color: "rgba(255,255,255,0.7)", marginBottom: "0.3rem" }}
+          style={{
+            color: "rgba(255,255,255,0.7)",
+            marginBottom: "0.3rem",
+          }}
         >
           {t.todaysSign} · {sign.date}
         </p>
+
         <h2
           style={{
             fontFamily: "var(--font-serif)",
@@ -1092,10 +1101,18 @@ const SignOfDayCard = () => {
         >
           {sign.word}
         </h2>
-        <p style={{ fontSize: "0.9375rem", opacity: 0.85, margin: 0 }}>
+
+        <p
+          style={{
+            fontSize: "0.9375rem",
+            opacity: 0.85,
+            margin: 0,
+          }}
+        >
           {sign.description}
         </p>
       </div>
+
       {sign.image_url && (
         <img
           src={sign.image_url}
@@ -1109,23 +1126,6 @@ const SignOfDayCard = () => {
             flexShrink: 0,
           }}
         />
-
-    <div style={{
-      background: "linear-gradient(135deg, var(--sage-dark) 0%, var(--sage) 100%)",
-      borderRadius: "var(--radius-xl)", padding: "2rem", color: "#fff",
-      display: "flex", alignItems: "center", gap: "1.5rem", marginBottom: "1.5rem",
-      boxShadow: "var(--shadow-md)"
-    }}>
-      <div style={{ fontSize: "3.5rem", flexShrink: 0, lineHeight: 1 }}>🤟</div>
-      <div style={{ flex: 1 }}>
-        <p className="sl-label" style={{ color: "rgba(255,255,255,0.7)", marginBottom: "0.3rem" }}>{t.todaysSign} · {sign.date}</p>
-        <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "1.75rem", fontWeight: 400, margin: "0 0 0.3rem" }}>{sign.word}</h2>
-        <p style={{ fontSize: "0.9375rem", opacity: 0.85, margin: 0 }}>{sign.description}</p>
-      </div>
-      {sign.image_url && (
-        <img src={sign.image_url} alt={sign.word}
-          style={{ width: "6rem", height: "6rem", borderRadius: "var(--radius-lg)", objectFit: "cover", border: "3px solid rgba(255,255,255,0.3)", flexShrink: 0 }} />
-
       )}
     </div>
   );
