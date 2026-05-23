@@ -1128,6 +1128,7 @@ const DictionaryViewer = () => {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
   const [categories, setCategories] = useState([]);
+
   useEffect(() => {
     axios.get(`${API}/dictionary`).then((r) => setEntries(r.data));
     axios
@@ -1135,20 +1136,19 @@ const DictionaryViewer = () => {
       .then((r) => setCategories(r.data));
   }, []);
 
+  // Combined logic into a single filter
   const filtered = entries.filter((e) => {
     const matchSearch =
       e.word.toLowerCase().includes(search.toLowerCase()) ||
       (e.description || "").toLowerCase().includes(search.toLowerCase());
 
-  const filtered = entries.filter(e => {
-    const matchSearch = e.word.toLowerCase().includes(search.toLowerCase()) || (e.description || "").toLowerCase().includes(search.toLowerCase());
-
     const matchCat = category === "All" || e.category === category;
     return matchSearch && matchCat;
   });
+
   return (
     <div>
-
+      
       <div
         style={{
           display: "flex",
@@ -1166,6 +1166,8 @@ const DictionaryViewer = () => {
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
+
+      
       <div
         style={{
           display: "flex",
@@ -1178,12 +1180,16 @@ const DictionaryViewer = () => {
           <button
             key={c}
             onClick={() => setCategory(c)}
-            className={`sl-btn sl-btn-sm ${category === c ? "sl-btn-primary" : "sl-btn-ghost"}`}
+            className={`sl-btn sl-btn-sm ${
+              category === c ? "sl-btn-primary" : "sl-btn-ghost"
+            }`}
           >
             {c === "All" ? t.allCategories : c}
           </button>
         ))}
       </div>
+
+      
       {filtered.length === 0 ? (
         <div className="sl-empty">
           <div className="sl-empty-icon">🔍</div>
@@ -1213,7 +1219,7 @@ const DictionaryViewer = () => {
                 <img
                   src={e.image_url}
                   alt={e.word}
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  style={{ width: "100%",``` height: "100%", objectFit: "cover" }}
                 />
               </div>
               <div style={{ padding: "0.875rem" }}>
@@ -1251,32 +1257,6 @@ const DictionaryViewer = () => {
                     {e.description}
                   </p>
                 )}
-
-      <div style={{ display: "flex", gap: "0.75rem", marginBottom: "1.25rem", flexWrap: "wrap", alignItems: "center" }}>
-        <input className="sl-input" style={{ flex: 1, minWidth: "200px" }}
-          placeholder={t.searchSigns} value={search} onChange={e => setSearch(e.target.value)} />
-      </div>
-      <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "1.5rem" }}>
-        {["All", ...categories].map(c => (
-          <button key={c} onClick={() => setCategory(c)}
-            className={`sl-btn sl-btn-sm ${category === c ? "sl-btn-primary" : "sl-btn-ghost"}`}>
-            {c === "All" ? t.allCategories : c}
-          </button>
-        ))}
-      </div>
-      {filtered.length === 0
-        ? <div className="sl-empty"><div className="sl-empty-icon">🔍</div><p>{t.noDictEntries}</p></div>
-        : <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", gap: "1rem" }}>
-          {filtered.map(e => (
-            <div key={e.id} className="sl-card sl-card-hover" style={{ padding: 0, overflow: "hidden" }}>
-              <div style={{ aspectRatio: "1", background: "var(--cream)", overflow: "hidden" }}>
-                <img src={e.image_url} alt={e.word} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-              </div>
-              <div style={{ padding: "0.875rem" }}>
-                <p style={{ fontWeight: 600, fontSize: "0.9375rem", margin: "0 0 0.2rem", color: "var(--stone-900)" }}>{e.word}</p>
-                <p style={{ fontSize: "0.8125rem", color: "var(--sage)", fontWeight: 500, margin: 0 }}>{e.category}</p>
-                {e.description && <p style={{ fontSize: "0.75rem", color: "var(--stone-400)", marginTop: "0.25rem", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{e.description}</p>}
-
               </div>
             </div>
           ))}
