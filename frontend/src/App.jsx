@@ -986,7 +986,6 @@ const CountdownBadge = ({ dueDate }) => {
    BADGE CARD
 ═══════════════════════════════════════════════════════════════════════════ */
 const BadgeCard = ({ badge, locked = false }) => (
-        
   <div
     className={`sl-card ${locked ? "" : "sl-card-hover"}`}
     style={{
@@ -1034,20 +1033,9 @@ const BadgeCard = ({ badge, locked = false }) => (
         Not yet earned
       </p>
     )}
-
-  <div className={`sl-card ${locked ? "" : "sl-card-hover"}`}
-    style={{ opacity: locked ? 0.5 : 1, textAlign: "center", padding: "1.5rem 1rem" }}>
-    <div style={{ fontSize: "2.75rem", marginBottom: "0.75rem" }}>{badge.emoji}</div>
-    <p style={{ fontWeight: 600, fontSize: "0.9375rem", color: "var(--stone-800)", marginBottom: "0.25rem" }}>{badge.label}</p>
-    <p style={{ fontSize: "0.8125rem", color: "var(--stone-500)" }}>{badge.desc}</p>
-    {badge.earned_at && !locked && (
-      <p style={{ fontSize: "0.75rem", color: "var(--sage)", fontWeight: 600, marginTop: "0.75rem" }}>{badge.earned_at}</p>
-    )}
-    {locked && <p style={{ fontSize: "0.75rem", color: "var(--stone-400)", marginTop: "0.75rem" }}>Not yet earned</p>}
-
   </div>
 );
-    };
+    
 /* ═══════════════════════════════════════════════════════════════════════════
    SIGN OF DAY CARD
 ═══════════════════════════════════════════════════════════════════════════ */
