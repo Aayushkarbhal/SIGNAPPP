@@ -477,7 +477,6 @@ def _fmt_doubt(d):
         "created_at": d.created_at.strftime("%d %b %H:%M"),
         "replies": [_fmt_reply(r) for r in d.replies]
     }
-
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     socketio.run(app, host='0.0.0.0', port=port)
