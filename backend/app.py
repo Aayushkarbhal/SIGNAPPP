@@ -21,9 +21,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///signlearn_final.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['MAX_CONTENT_LENGTH'] = 500 * 1024 * 1024
 
-CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
+CORS(app)
 db = SQLAlchemy(app)
-socketio = SocketIO(app, cors_allowed_origins="http://localhost:5173")
+SocketIO(app, cors_allowed_origins="*")
 
 def allowed_file(filename, allowed_set):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in allowed_set
