@@ -1219,7 +1219,7 @@ const DictionaryViewer = () => {
                 <img
                   src={e.image_url}
                   alt={e.word}
-                  style={{ width: "100%",``` height: "100%", objectFit: "cover" }}
+                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 />
               </div>
               <div style={{ padding: "0.875rem" }}>
