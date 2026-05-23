@@ -899,9 +899,9 @@ const DesignSystem = () => (
 ═══════════════════════════════════════════════════════════════════════════ */
 const LangSwitcher = () => {
   const { lang, switchLang, LANGS } = useLang();
+
   return (
     <div className="sl-lang" role="navigation" aria-label="Language">
-
       {Object.values(LANGS).map((l) => (
         <button
           key={l.code}
@@ -909,12 +909,6 @@ const LangSwitcher = () => {
           className={`sl-lang-btn ${lang === l.code ? "active" : ""}`}
           aria-pressed={lang === l.code}
         >
-
-      {Object.values(LANGS).map(l => (
-        <button key={l.code} onClick={() => switchLang(l.code)}
-          className={`sl-lang-btn ${lang === l.code ? "active" : ""}`}
-          aria-pressed={lang === l.code}>
-
           {l.flag} {l.label}
         </button>
       ))}
@@ -924,24 +918,28 @@ const LangSwitcher = () => {
 
 const DiffBadge = ({ level }) => {
   const { t } = useLang();
+
   const map = {
     easy: "sl-badge sl-badge-sage",
     medium: "sl-badge sl-badge-amber",
-
     hard: "sl-badge sl-badge-rose",
-
-    hard: "sl-badge sl-badge-rose"
-
   };
-  return <span className={map[level] || map.medium}>{t[level] || level}</span>;
+
+  return (
+    <span className={map[level] || map.medium}>
+      {t[level] || level}
+    </span>
+  );
 };
 
 const CountdownBadge = ({ dueDate }) => {
   const { t } = useLang();
   const [display, setDisplay] = useState("");
   const [status, setStatus] = useState("ok");
+
   useEffect(() => {
     if (!dueDate) return;
+
     const tick = () => {
       const diff = new Date(dueDate) - new Date();
 
@@ -950,29 +948,31 @@ const CountdownBadge = ({ dueDate }) => {
         setDisplay(t.overdue);
         return;
       }
-      const days = Math.floor(diff / 86400000),
-        hrs = Math.floor((diff % 86400000) / 3600000),
-        mins = Math.floor((diff % 3600000) / 60000);
+
+      const days = Math.floor(diff / 86400000);
+      const hrs = Math.floor((diff % 86400000) / 3600000);
+      const mins = Math.floor((diff % 3600000) / 60000);
+
       setStatus(diff < 86400000 ? "urgent" : "ok");
+
       setDisplay(
         days > 0
           ? `${t.dueIn} ${days} ${t.daysLeft}`
           : hrs > 0
-            ? `${t.dueIn} ${hrs} ${t.hoursLeft}`
-            : `${t.dueIn} ${mins} ${t.minsLeft}`,
+          ? `${t.dueIn} ${hrs} ${t.hoursLeft}`
+          : `${t.dueIn} ${mins} ${t.minsLeft}`
       );
-
-      if (diff <= 0) { setStatus("overdue"); setDisplay(t.overdue); return; }
-      const days = Math.floor(diff / 86400000), hrs = Math.floor((diff % 86400000) / 3600000), mins = Math.floor((diff % 3600000) / 60000);
-      setStatus(diff < 86400000 ? "urgent" : "ok");
-      setDisplay(days > 0 ? `${t.dueIn} ${days} ${t.daysLeft}` : hrs > 0 ? `${t.dueIn} ${hrs} ${t.hoursLeft}` : `${t.dueIn} ${mins} ${t.minsLeft}`);
-
     };
+
     tick();
+
     const id = setInterval(tick, 30000);
+
     return () => clearInterval(id);
   }, [dueDate, t]);
+
   if (!dueDate) return null;
+
   const cls = `sl-countdown sl-countdown-${status}`;
 
   return (
@@ -980,9 +980,6 @@ const CountdownBadge = ({ dueDate }) => {
       ⏰ {display}
     </span>
   );
-
-  return <span className={cls} role="timer">⏰ {display}</span>;
-
 };
 
 /* ═══════════════════════════════════════════════════════════════════════════
