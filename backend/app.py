@@ -23,7 +23,7 @@ app.config['MAX_CONTENT_LENGTH'] = 500 * 1024 * 1024
 
 CORS(app)
 db = SQLAlchemy(app)
-SocketIO(app, cors_allowed_origins="*")
+socketio = SocketIO(app, cors_allowed_origins="*")
 
 def allowed_file(filename, allowed_set):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in allowed_set
