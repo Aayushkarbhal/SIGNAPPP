@@ -1647,8 +1647,7 @@ const QuizOverlay = ({ user, topic, ano, onClose }) => {
                   )}
                 </div>
               )}
-
-              <div className="sl-auth-grid">
+          <div className="sl-quiz-options-grid">
                 {["A", "B", "C", "D"].map((opt) => {
                   const isSelected = answers[current]?.toUpperCase() === opt;
                   const optImg = q[`img_${opt.toLowerCase()}`];
@@ -1961,13 +1960,12 @@ const Auth = ({ setAuth }) => {
     <>
       <DesignSystem />
       <div
-        style={{
-          minHeight: "100vh",
-          display: "grid",
-          className="sl-quiz-options-grid",
-          background: "var(--cream)",
-        }}
-      >
+  className="sl-quiz-options-grid"
+  style={{
+    minHeight: "100vh",
+    background: "var(--cream)",
+  }}
+>
         {/* Left: brand panel */}
         <div
           style={{
@@ -3081,7 +3079,101 @@ const TeacherView = ({ user }) => {
               </div>
             </div>
           )}
-
+ {/* SCHEDULE */}
+          {tab === "schedule" && (
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "1.5rem",
+                maxWidth: "560px",
+              }}
+            >
+              <div className="sl-card">
+                <h2
+                  className="sl-heading"
+                  style={{ marginBottom: "1.5rem", fontSize: "1.25rem" }}
+                >
+                  {t.setDueDate}
+                </h2>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "1rem",
+                  }}
+                >
+                  <select
+                    className="sl-input"
+                    value={dueForm.assignment_no}
+                    onChange={(e) =>
+                      setDueForm({ ...dueForm, assignment_no: e.target.value })
+                    }
+                  >
+                    <option value="">— Select Lesson —</option>
+                    {sessions.map((s) => (
+                      <option key={s.id} value={s.ano}>
+                        Lesson {s.ano}: {s.title}
+                      </option>
+                    ))}
+                  </select>
+                  <input
+                    type="datetime-local"
+                    className="sl-input"
+                    value={dueForm.due_date}
+                    onChange={(e) =>
+                      setDueForm({ ...dueForm, due_date: e.target.value })
+                    }
+                  />
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.875rem",
+                    }}
+                  >
+                    <button
+                      onClick={updateDueDate}
+                      className="sl-btn sl-btn-primary"
+                    >
+                      {t.updateDue}
+                    </button>
+                    {dueMsg && (
+                      <span
+                        style={{
+                          color: "var(--sage)",
+                          fontWeight: 600,
+                          fontSize: "0.9375rem",
+                        }}
+                      >
+                        {dueMsg}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div className="sl-card">
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0.625rem",
+                  }}
+                >
+                  {sessions.map((s) => (
+                    <div
+                      key={s.id}
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        padding: "0.875rem 1rem",
+                        background: "var(--cream)",
+                        borderRadius: "var(--radius-md)",
+                        flexWrap: "wrap",
+                        gap: "0.5rem",
+                      }}
+                    >
           {/* SCHEDULE */}
           {tab === "schedule" && (
             <div
