@@ -3548,14 +3548,13 @@ const StudentView = ({ user }) => {
 
         <div className="sl-container" style={{ padding: "1.5rem" }}>
           {/* Stats */}
-          <div
-            style={{
-              display: "grid",
-              className="sl-stats-grid"
-              gap: "1rem",
-              marginBottom: "1.5rem",
-            }}
-          >
+<div
+  className="sl-stats-grid"
+  style={{
+    gap: "1rem",
+    marginBottom: "1.5rem",
+  }}
+>
             {[
               { label: t.lessonsAvailable, value: vids.length, icon: "📹" },
               { label: t.quizzesDone, value: history.length, icon: "✅" },
