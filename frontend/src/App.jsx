@@ -1648,13 +1648,7 @@ const QuizOverlay = ({ user, topic, ano, onClose }) => {
                 </div>
               )}
 
-              <div
-                style={{
-                  display: "grid",
-                  className="sl-auth-grid"
-                  gap: "0.875rem",
-                }}
-              >
+              <div className="sl-auth-grid">
                 {["A", "B", "C", "D"].map((opt) => {
                   const isSelected = answers[current]?.toUpperCase() === opt;
                   const optImg = q[`img_${opt.toLowerCase()}`];
