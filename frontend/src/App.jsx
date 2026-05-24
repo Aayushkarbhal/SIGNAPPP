@@ -855,6 +855,7 @@ const SignOfDayCard = () => {
   if (!sign) return null;
   return (
     <div
+      className="sl-sotd-card"
       style={{
         background:
           "linear-gradient(135deg, var(--sage-dark) 0%, var(--sage) 100%)",
@@ -1647,7 +1648,18 @@ const QuizOverlay = ({ user, topic, ano, onClose }) => {
                   )}
                 </div>
               )}
+<<<<<<< HEAD
           <div className="sl-quiz-options-grid">
+=======
+
+              <div
+                className="sl-quiz-options-grid"
+                style={{
+                  display: "grid",
+                  gap: "0.875rem",
+                }}
+              >
+>>>>>>> 1835e98 (fixed responsive ui and mobile layout)
                 {["A", "B", "C", "D"].map((opt) => {
                   const isSelected = answers[current]?.toUpperCase() === opt;
                   const optImg = q[`img_${opt.toLowerCase()}`];
@@ -1858,6 +1870,7 @@ const QuizOverlay = ({ user, topic, ano, onClose }) => {
                   return (
                     <div
                       key={i}
+                      className="sl-flex-responsive-row"
                       style={{
                         display: "flex",
                         alignItems: "center",
@@ -1960,12 +1973,22 @@ const Auth = ({ setAuth }) => {
     <>
       <DesignSystem />
       <div
+<<<<<<< HEAD
   className="sl-quiz-options-grid"
   style={{
     minHeight: "100vh",
     background: "var(--cream)",
   }}
 >
+=======
+        className="sl-auth-grid"
+        style={{
+          minHeight: "100vh",
+          display: "grid",
+          background: "var(--cream)",
+        }}
+      >
+>>>>>>> 1835e98 (fixed responsive ui and mobile layout)
         {/* Left: brand panel */}
         <div
           style={{
@@ -2195,8 +2218,8 @@ const Auth = ({ setAuth }) => {
 const Topbar = ({ user, role }) => {
   const { t } = useLang();
   return (
-    <header className="sl-topbar">
-      <div style={{ display: "flex", alignItems: "center", gap: "0.875rem" }}>
+    <header className="sl-topbar sl-topbar-responsive">
+      <div className="sl-flex-responsive-row" style={{ display: "flex", alignItems: "center", gap: "0.875rem" }}>
         <span style={{ fontSize: "1.75rem", lineHeight: 1 }}>🤟</span>
         <div>
           <span
@@ -3126,6 +3149,7 @@ const TeacherView = ({ user }) => {
                     }
                   />
                   <div
+                    className="sl-flex-responsive-row"
                     style={{
                       display: "flex",
                       alignItems: "center",
@@ -3548,6 +3572,7 @@ const StudentView = ({ user }) => {
 
         <div className="sl-container" style={{ padding: "1.5rem" }}>
           {/* Stats */}
+<<<<<<< HEAD
 <div
   className="sl-stats-grid"
   style={{
@@ -3555,6 +3580,16 @@ const StudentView = ({ user }) => {
     marginBottom: "1.5rem",
   }}
 >
+=======
+          <div
+            className="sl-stats-grid"
+            style={{
+              display: "grid",
+              gap: "1rem",
+              marginBottom: "1.5rem",
+            }}
+          >
+>>>>>>> 1835e98 (fixed responsive ui and mobile layout)
             {[
               { label: t.lessonsAvailable, value: vids.length, icon: "📹" },
               { label: t.quizzesDone, value: history.length, icon: "✅" },
